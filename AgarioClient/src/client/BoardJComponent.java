@@ -8,7 +8,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
@@ -27,8 +29,8 @@ import utils.*;
  */
 public class BoardJComponent extends JComponent implements KeyListener {
 	private Game game;
-	private Image obstacleImage = new ImageIcon("obstacle.png").getImage();
-	private Image humanPlayerImage= new ImageIcon("abstract-user-flat.png").getImage();
+	private Image obstacleImage;
+	private Image humanPlayerImage;
 	private String lastPressedDirection=null;
 	private boolean useArrows;
 	
@@ -37,6 +39,12 @@ public class BoardJComponent extends JComponent implements KeyListener {
 		this.useArrows=useArrows;
 		setFocusable(true);
 		addKeyListener(this);
+		try {
+            obstacleImage = ImageIO.read(getClass().getClassLoader().getResource("obstacle.png"));
+            humanPlayerImage = ImageIO.read(getClass().getClassLoader().getResource("abstract-user-flat.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override
