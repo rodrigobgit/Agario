@@ -40,8 +40,8 @@ public class BoardJComponent extends JComponent implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 		try {
-            obstacleImage = ImageIO.read(getClass().getClassLoader().getResource("obstacle.png"));
-            humanPlayerImage = ImageIO.read(getClass().getClassLoader().getResource("abstract-user-flat.png"));
+            obstacleImage = ImageIO.read(getClass().getResource("obstacle.png"));
+            humanPlayerImage = ImageIO.read(getClass().getResource("abstract-user-flat.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
